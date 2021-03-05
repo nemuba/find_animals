@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['pg_username'] %>
+  password: <%= ENV['pg_password'] %>
+  port: <%= ENV['pg_port'] %>
+  host: <%= ENV['pg_host'] %>
+
+development:
+  <<: *default
+  database: find_animals_development
+
+test:
+  <<: *default
+  database: find_animals_test
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
