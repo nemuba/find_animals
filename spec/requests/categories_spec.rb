@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "/categories", type: :request do
+RSpec.describe "api/v1/categories", type: :request do
 
   let(:valid_attributes) {
     attributes_for(:category)
