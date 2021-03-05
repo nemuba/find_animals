@@ -1,6 +1,7 @@
 module Api
   module V1
     class CategoriesController < ApiController
+      before_action :authenticate_and_set_user
       before_action :set_category, only: [:show, :update, :destroy]
     
       # GET /categories

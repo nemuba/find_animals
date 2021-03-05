@@ -58,6 +58,9 @@ RSpec.configure do |config|
 
    # Config factory bot
    config.include FactoryBot::Syntax::Methods
+   
+   # Config ApiGuard Test Helper
+   config.include ApiGuard::Test::ControllerHelper
 
    # Include helper create from test of request
    config.include RequestSpecHelper

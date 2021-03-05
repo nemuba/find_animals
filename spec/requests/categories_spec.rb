@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "api/v1/categories", type: :request do
 
+  let(:user) { create(:user)}
+
   let(:valid_attributes) {
     attributes_for(:category)
   }
@@ -11,7 +13,9 @@ RSpec.describe "api/v1/categories", type: :request do
   }
 
   let(:valid_headers) {
-    {}
+    {
+      Authorization: "Bearer #{jwt_and_refresh_token(user, 'user').first}"
+    }
   }
 
   describe "GET /index" do
@@ -25,7 +29,7 @@ RSpec.describe "api/v1/categories", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       category = Category.create! valid_attributes
-      get api_v1_category_url(category), as: :json
+      get api_v1_category_url(category), headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
