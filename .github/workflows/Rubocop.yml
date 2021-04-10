@@ -65,9 +65,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: AkhileshNS/heroku-deploy@v3.12.12
+        run: heroku update
         with:
           heroku_api_key: "3ce6790e-e0c3-493c-a318-f69cfd9fd9e4"
           heroku_app_name: "api-find-animalsi" #Must be unique in Heroku
           heroku_email: "nemubatubag@gmail.com"
           procfile: "web: rails s -p 3000"
-        run: heroku update
