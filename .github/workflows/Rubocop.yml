@@ -67,6 +67,7 @@ jobs:
       - uses: AkhileshNS/heroku-deploy@v3.12.12
         with:
           heroku_api_key: "3ce6790e-e0c3-493c-a318-f69cfd9fd9e4"
-          heroku_app_name: "find_animals_api" #Must be unique in Heroku
+          heroku_app_name: "api-find-animalsi" #Must be unique in Heroku
           heroku_email: "nemubatubag@gmail.com"
           procfile: "web: rails s -p 3000"
+        run: heroku update
