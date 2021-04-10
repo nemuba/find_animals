@@ -59,7 +59,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
   deploy-heroku:
-    name: Deploy Heroku
+    name: Deploy
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
     needs: rspec-test
     runs-on: ubuntu-latest
