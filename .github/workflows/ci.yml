@@ -58,17 +58,4 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-  deploy-heroku:
-    name: Deploy
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
-    needs: rspec-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "api-find-animals"
-          heroku_email: nemubatubag@gmail.com
+  
