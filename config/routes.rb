@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :animals
       resources :categories
       resources :users
+      get "/getlocation", to: "get_location#index"
     end
   end
 end
