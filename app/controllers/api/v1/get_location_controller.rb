@@ -13,7 +13,7 @@ module Api
 
         address = Geocoder.search([params[:longitude], params[:latitude]]).first
 
-        render json: { msg: "Location not found " } unless address.present?
+        render json: { status: "error", msg: "Location not found " } unless address.present?
 
         data = {
           location: {
