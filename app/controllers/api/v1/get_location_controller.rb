@@ -3,6 +3,8 @@
 module Api
   module V1
     class GetLocationController < ApiController
+      before_action :authenticate_and_set_user
+      
       def index
         return render json: {
           status: "error",
@@ -11,20 +13,7 @@ module Api
           ]
         }, status: :unprocessable_entity unless params_valid?
 
-        address = Geocoder.search([params[:longitude], params[:latitude]]).first
-
-        render json: { status: "error", msg: "Location not found " } unless address.present?
-
-        data = {
-          location: {
-            street: address.data["address"]["road"],
-            neighborhood: address.data["address"]["suburb"],
-            city: address.data["address"]["town"],
-            state: address.data["address"]["state"],
-            country: address.data["address"]["country"],
-            zipcode: address.data["address"]["postcode"]
-          }
-        }
+        data = GetLocation.new(params[:longitude], params[:latitude]).perform
 
         json_response(data)
       end
