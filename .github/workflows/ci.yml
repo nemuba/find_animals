@@ -9,16 +9,16 @@ on: [push,pull_request]
 jobs:
   rubocop-test:
     name: Rubocop
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
+          ruby-version: '3.0'
       - name: Install Rubocop
         run: bundle install && gem install rubocop
       - name: Check code
-        run: rubocop
+        run: bundle exec rubocop
   rspec-test:
     name: RSpec
     needs: rubocop-test
