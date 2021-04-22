@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GetLocation
   attr_accessor :longitude, :latitude, :address
 
@@ -8,12 +10,12 @@ class GetLocation
 
   def perform
     data = Geocoder.search([longitude, latitude])
-    
+
     return location_not_found unless data.present?
 
     @address = data.first
 
-    return location_not_found unless address.present? && address.data['address'].present?
+    return location_not_found unless address.present? && address.data["address"].present?
 
     location
   end
@@ -32,7 +34,7 @@ class GetLocation
   end
 
   private
-  def location_not_found
-    { status: "error", msg: "Location not found " }
-  end
+    def location_not_found
+      { status: "error", msg: "Location not found " }
+    end
 end

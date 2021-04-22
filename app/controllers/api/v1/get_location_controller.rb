@@ -4,7 +4,7 @@ module Api
   module V1
     class GetLocationController < ApiController
       before_action :authenticate_and_set_user
-      
+
       def index
         return render json: {
           status: "error",
