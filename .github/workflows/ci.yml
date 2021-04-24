@@ -71,3 +71,4 @@ jobs:
           buildpack: "https://github.com/heroku/heroku-buildpack-ruby.git"
           branch: "main"
           dontuseforce: true
+          procfile: "web: bin/rails s -p $PORT -e $RAILS_ENV"
