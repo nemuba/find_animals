@@ -5,13 +5,21 @@ require "rails_helper"
 RSpec.describe "api/v1/getlocation", type: :request do
   let(:path_url) { "#{api_v1_getlocation_url}?longitude=-23.4282534&latitude=-45.1204642" }
 
+  let(:user) { create(:user) }
+
+  let(:valid_headers) {
+    {
+      Authorization: "Bearer #{jwt_and_refresh_token(user, 'user').first}"
+    }
+  }
+
   it "renders a successful response" do
-    get path_url, as: :json
+    get path_url, headers: valid_headers, as: :json
     expect(response).to be_successful
   end
 
   it "renders a location address" do
-    get path_url, as: :json
+    get path_url, headers: valid_headers, as: :json
     expect(json_body).to include_json(
       location: {
         street: be_an(String),
