@@ -2,7 +2,11 @@
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  api_guard_routes for: "users"
+
+  api_guard_scope "users" do
+    post "api/v1/authenticate/sign_up" => "api_guard/registration#create"
+    post "api/v1/authenticate/sign_in" => "api_guard/authentication#create"
+  end
 
   namespace :api do
     namespace :v1 do
