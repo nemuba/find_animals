@@ -9,7 +9,7 @@ module Api
         return render json: {
           status: "error",
           msg: [
-            "Parametros inválidos! Parâmetros necessários: longitude, latitude"
+            "Parâmetros inválidos! Parâmetros necessários: longitude, latitude"
           ]
         }, status: :unprocessable_entity unless params_valid?
 
