@@ -8,7 +8,11 @@ module Api
 
       # GET /animals
       def index
-        animals = Animal.all
+        animals = if params[:category_id].present?
+                    Animal.where(category_id: params[:category_id])
+                  else
+                    Animal.all
+                  end
 
         json_response(animals)
       end

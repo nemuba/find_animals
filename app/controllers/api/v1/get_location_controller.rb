@@ -13,7 +13,7 @@ module Api
           ]
         }, status: :unprocessable_entity unless params_valid?
 
-        data = GetLocation.new(params[:longitude], params[:latitude]).perform
+        data = GetLocation.new(params[:latitude], params[:longitude]).perform
 
         json_response(data)
       end
