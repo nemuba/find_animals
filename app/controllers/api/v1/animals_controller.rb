@@ -9,9 +9,9 @@ module Api
       # GET /animals
       def index
         animals = if params[:category_id].present?
-          Animal.where(category_id: params[:category_id])
+          Animal.includes(:category, :user).where(category_id: params[:category_id])
         else
-          Animal.all
+          Animal.includes(:category, :user)
         end
 
         json_response(animals)

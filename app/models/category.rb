@@ -5,7 +5,6 @@ class Category < ApplicationRecord
 
   has_many :animals
 
-
   def self.default_scope
     includes([:animals])
   end
